@@ -7,10 +7,11 @@ BASE_URL :  https://praveen-liftoff-assignment.herokuapp.com/
 - **GET**  :  **/api/v1/hello**                            - Test route
 - **GET**  :  **/api/v1/exams/1/questions**  - Questions list
 - **POST**:  **/api/v1/exams/1/results**       - Generate result
-		- body : `{
+- 
+		- body : {
 				answers : [{
 					_id : String,
 					selectedIndex : String
-				},]
-			}`
+				}]
+			}
 
