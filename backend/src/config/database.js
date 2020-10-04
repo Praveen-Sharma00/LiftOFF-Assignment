@@ -32,6 +32,9 @@ export default function getDbConfig() {
   }
   dbUrl += `/${process.env.DB_NAME}`;
 
+  if (process.env.NODE_ENV === 'production') {
+    dbUrl += `?retryWrites=true&w=majority`;
+  }
   dbConfig['dbUrl'] = dbUrl;
 
   return dbConfig;

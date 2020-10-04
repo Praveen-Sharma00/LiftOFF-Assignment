@@ -1,7 +1,11 @@
 require = require('esm')(module);
 
-require('dotenv').config({
-  path: `${__dirname}/config/env/${process.env.NODE_ENV}.env`,
-});
+global.appRoot = `${__dirname}`;
+
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config({
+    path: `${__dirname}/config/env/development.env`,
+  });
+}
 
 module.exports = require('./server');

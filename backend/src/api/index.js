@@ -1,6 +1,7 @@
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
 import config from '../config';
+import ExamRoutes from './modules/exams/examRoutes';
 
 import HelloRoutes from './modules/hello/helloRoutes';
 
@@ -9,11 +10,13 @@ export default function loadRoutes({ app }) {
 
   app.use(`/${apiPrefix}/hello`, HelloRoutes);
 
+  app.use(`/${apiPrefix}/exams`, ExamRoutes);
+
   app.use(`/${apiPrefix}*`, (req, res, next) => {
     let err = new Error();
     err.message = ReasonPhrases.NOT_FOUND;
     err.statusCode = StatusCodes.NOT_FOUND;
-    err.isOperational = true
+    err.isOperational = true;
     next(err);
   });
 }
